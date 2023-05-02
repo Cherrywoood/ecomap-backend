@@ -1,0 +1,1 @@
+CREATE INDEX ecopoint_geometry_idx ON ecopoint USING GIST (geometry);
