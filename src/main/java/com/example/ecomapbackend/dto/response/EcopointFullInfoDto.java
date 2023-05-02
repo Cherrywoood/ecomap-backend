@@ -18,13 +18,12 @@ public class EcopointFullInfoDto {
     private String address;
     private Point geometry;
     private String name;
-    private String photo;
     private String description;
     private String site;
     private String phoneNumber;
     private String email;
-    private Boolean convenience;
-    private List<OpeningHoursInfoDto> openingHoursInfoDtos;
+    private Boolean isConvenience;
+    private List<OpeningHoursInfoDto> openingHoursList;
     private Set<WasteTypeInfoDto> wasteTypes;
     private Set<EcopointTypeInfoDto> ecopointTypes;
 

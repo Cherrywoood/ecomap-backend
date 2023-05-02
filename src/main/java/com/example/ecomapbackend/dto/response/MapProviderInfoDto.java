@@ -15,5 +15,5 @@ public class MapProviderInfoDto {
     private String url;
     private String attribution;
     private String authToken;
-    private Boolean isDefault;
+    private Boolean isMain;
 }

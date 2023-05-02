@@ -17,7 +17,6 @@ public class EcopointMainInfoDto {
     private String address;
     private Point geometry;
     private String name;
-    private String photo;
     private String description;
     private Set<WasteTypeInfoDto> wasteTypes;
     private Set<EcopointTypeInfoDto> ecopointTypes;
