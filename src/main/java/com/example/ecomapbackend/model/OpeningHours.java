@@ -2,6 +2,7 @@ package com.example.ecomapbackend.model;
 
 import com.example.ecomapbackend.enums.DayWeek;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,10 +22,12 @@ public class OpeningHours {
     @Column(name = "id")
     private Integer id;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ecopoint_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "ecopoint_id", nullable = false)
     private Ecopoint ecopoint;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "day", nullable = false)
     private DayWeek day;
@@ -35,7 +38,20 @@ public class OpeningHours {
     @Column(name = "close_time", nullable = false)
     private LocalTime closeTime;
 
+    @NotNull
     @Column(name = "is_day_off", nullable = false)
     private Boolean isDayOff;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OpeningHours)) return false;
+        return id != null && id.equals(((OpeningHours) o).getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
 }
