@@ -18,3 +18,30 @@ spring:
       hibernate:
         show_sql: true
         format_sql: false
+        order_inserts: true
+        order_updates: true
+        jdbc:
+          batch_size: 15
+        #generate_statistics: true
+  servlet:
+    multipart:
+      max-file-size: 1MB
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: xxxxxx
+    password: xxxxx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+mail:
+  from: xxxxx
+  to: xxxxx
+
+
+path:
+  images: ecopoint-images/
