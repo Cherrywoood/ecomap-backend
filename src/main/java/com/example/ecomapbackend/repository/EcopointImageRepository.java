@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EcopointImageRepository extends JpaRepository<EcopointImage, Integer> {
-    List<EcopointImage> findAllByEcopointId(Integer id);
+public interface EcopointImageRepository extends JpaRepository<EcopointImage, Long> {
+    List<EcopointImage> findAllByEcopointId(Long id);
 }

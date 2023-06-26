@@ -2,7 +2,7 @@ package com.example.ecomapbackend.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,33 +13,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "ecopoint_image")
-public class EcopointImage {
-
+@Table(name = "shop_type")
+public class ShopType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Short id;
 
     @NotBlank
-    @Column(name = "image_path", nullable = false, unique = true)
-    private String imagePath;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ecopoint_id", referencedColumnName = "id", nullable = false)
-    private Ecopoint ecopoint;
+    @Size(max = 25)
+    @Column(name = "name", nullable = false, unique = true, length = 25)
+    private String name;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof EcopointImage)) return false;
-        return id != null && id.equals(((EcopointImage) o).getId());
+        if (!(o instanceof ShopType)) return false;
+        return id != null && id.equals(((ShopType) o).getId());
     }
 
     @Override
     public int hashCode() {
         return getClass().hashCode();
     }
-
 }

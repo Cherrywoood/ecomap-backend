@@ -26,7 +26,7 @@ public class EcopointSuggestionServiceImpl implements EcopointSuggestionService 
 
 
     private String createMassageTemplate(EcopointSuggestionDto dto) {
-        var isOrganisation = dto.getIsOrganization() ? "Да" : "Нет";
+        var isOrganisation = Boolean.TRUE.equals(dto.getIsOrganization()) ? "Да" : "Нет";
         return String.format("""
                         Имя: %s
                         Название эко точки: %s

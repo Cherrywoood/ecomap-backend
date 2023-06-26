@@ -13,8 +13,8 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OpeningHoursInfoDto {
-    private Integer id;
+public class WorkScheduleInfoDto {
+    private Long id;
     private DayWeek day;
 
     @JsonFormat(pattern = "HH:mm", timezone = "UTC")

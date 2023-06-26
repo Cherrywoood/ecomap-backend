@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.locationtech.jts.geom.Point;
 
 import java.util.ArrayList;
@@ -22,15 +24,15 @@ public class Ecopoint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @NotBlank
     @Column(name = "address", nullable = false)
     private String address;
 
     @NotNull
-    @Column(name = "geometry", nullable = false, unique = true)
-    private Point geometry;
+    @Column(name = "position", columnDefinition = "geometry(Point,3857)", nullable = false, unique = true)
+    private Point position;
 
     @NotBlank
     @Column(name = "name", nullable = false)
@@ -57,25 +59,44 @@ public class Ecopoint {
     private Boolean isConvenience;
 
     @ManyToMany(cascade = CascadeType.MERGE)
+    @Fetch(value = FetchMode.SUBSELECT)
     @JoinTable(name = "ecopoint_waste_type",
             joinColumns = @JoinColumn(name = "ecopoint_id"),
             inverseJoinColumns = @JoinColumn(name = "waste_type_id"))
     private Set<WasteType> wasteTypes;
 
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JoinTable(name = "ecopoint_shop_type",
+            joinColumns = @JoinColumn(name = "ecopoint_id"),
+            inverseJoinColumns = @JoinColumn(name = "shop_type_id"))
+    private Set<ShopType> shopTypes;
+
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JoinTable(name = "ecopoint_event_type",
+            joinColumns = @JoinColumn(name = "ecopoint_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_type_id"))
+    private Set<EventType> eventTypes;
+
     @NotEmpty
     @ManyToMany(cascade = CascadeType.MERGE)
+    @Fetch(value = FetchMode.SUBSELECT)
     @JoinTable(name = "ecopoint_type_ecopoint",
             joinColumns = @JoinColumn(name = "ecopoint_id"),
             inverseJoinColumns = @JoinColumn(name = "ecopoint_type_id"))
     private Set<EcopointType> ecopointTypes;
 
+
     @Builder.Default
     @OneToMany(mappedBy = "ecopoint", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<EcopointImage> ecopointImages = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(mappedBy = "ecopoint", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OpeningHours> openingHoursList = new ArrayList<>();
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<WorkSchedule> workSchedules = new ArrayList<>();
 
     public void addEcopointImage(EcopointImage ecopointImage) {
         this.ecopointImages.add(ecopointImage);
@@ -87,19 +108,19 @@ public class Ecopoint {
         ecopointImage.setEcopoint(null);
     }
 
-    public void addOpeningHours(OpeningHours openingHours) {
-        this.openingHoursList.add(openingHours);
-        openingHours.setEcopoint(this);
+    public void addWorkSchedule(WorkSchedule workSchedule) {
+        this.workSchedules.add(workSchedule);
+        workSchedule.setEcopoint(this);
     }
 
-    public void removeOpeningHours(OpeningHours openingHours) {
-        this.openingHoursList.remove(openingHours);
-        openingHours.setEcopoint(null);
+    public void removeWorkSchedule(WorkSchedule workSchedule) {
+        this.workSchedules.remove(workSchedule);
+        workSchedule.setEcopoint(null);
     }
 
-    public void removeAllOpeningHours() {
-        this.openingHoursList.forEach(openingHours -> openingHours.setEcopoint(null));
-        this.openingHoursList.clear();
+    public void removeAllWorkSchedule() {
+        this.workSchedules.forEach(openingHours -> openingHours.setEcopoint(null));
+        this.workSchedules.clear();
     }
 
     @Override

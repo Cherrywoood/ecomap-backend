@@ -22,15 +22,15 @@ spring:
         order_updates: true
         jdbc:
           batch_size: 15
-        #generate_statistics: true
+        generate_statistics: true
   servlet:
     multipart:
       max-file-size: 1MB
   mail:
     host: smtp.gmail.com
     port: 587
-    username: xxxxxx
-    password: xxxxx
+    username: cherrywood6918@gmail.com
+    password: igiiwszimdiwhqlv
     properties:
       mail:
         smtp:
@@ -38,9 +38,13 @@ spring:
           starttls:
             enable: true
 
+jwt:
+  secret: spring
+  expiration: 86400000
+
 mail:
-  from: xxxxx
-  to: xxxxx
+  from: cherrywood6918@gmail.com
+  to: cherrywood6918@gmail.com
 
 
 path:

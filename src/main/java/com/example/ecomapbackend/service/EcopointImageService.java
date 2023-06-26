@@ -12,11 +12,11 @@ public interface EcopointImageService {
 
     EcopointImage save(MultipartFile image, Ecopoint ecopoint);
 
-    Resource findById(Integer id);
+    Resource findById(Long id);
 
     void deleteAll(List<EcopointImage> images);
 
     void updateAll(List<MultipartFile> images, Ecopoint ecopoint);
 
-    List<EcopointImage> findAllByEcopointId(Integer id);
+    List<EcopointImage> findAllByEcopointId(Long id);
 }

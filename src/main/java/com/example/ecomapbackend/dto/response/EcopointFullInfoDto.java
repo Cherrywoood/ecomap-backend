@@ -14,17 +14,19 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 public class EcopointFullInfoDto {
-    private Integer id;
+    private Long id;
     private String address;
-    private Point geometry;
+    private Point position;
     private String name;
     private String description;
     private String site;
     private String phoneNumber;
     private String email;
-    private Boolean isConvenience;
-    private List<OpeningHoursInfoDto> openingHoursList;
+    private boolean isConvenience;
+    private List<WorkScheduleInfoDto> workSchedules;
     private Set<WasteTypeInfoDto> wasteTypes;
+    private Set<ShopTypeInfoDto> shopTypes;
+    private Set<EventTypeInfoDto> eventTypes;
     private Set<EcopointTypeInfoDto> ecopointTypes;
-
+    private List<Long> ecopointImages;
 }

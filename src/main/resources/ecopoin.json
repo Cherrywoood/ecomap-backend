@@ -1,0 +1,69 @@
+{
+  "address": "ул. Передовиков, 16к2",
+  "position": {
+    "type": "Point",
+    "coordinates": [
+      30.45883089,
+      59.94542376
+    ]
+  },
+  "name": "Квадрат",
+  "description": "сгенерирование описание сгенерирование описание сгенерирование описание сгенерирование описание сгенерирование описание сгенерирование описание сгенерирование описание сгенерирование описание сгенерирование описание сгенерирование описание сгенерирование описание сгенерирование описание сгенерирование описание",
+  "site": "https://vk.com/dm_kvadrat",
+  "phoneNumber": "+7 999 999-99-99",
+  "email": "email@gmail.com",
+  "workSchedules": [
+    {
+      "id": 1,
+      "day": "MON",
+      "openTime": null,
+      "closeTime": null,
+      "isDayOff": true
+    },
+    {
+      "id": 2,
+      "day": "TUE",
+      "openTime": null,
+      "closeTime": null,
+      "isDayOff": true
+    },
+    {
+      "id": 3,
+      "day": "WED",
+      "openTime": "08:00",
+      "closeTime": "09:00",
+      "isDayOff": false
+    },
+    {
+      "id": 4,
+      "day": "THU",
+      "openTime": null,
+      "closeTime": null,
+      "isDayOff": true
+    },
+    {
+      "id": 5,
+      "day": "FRI",
+      "openTime": "08:00",
+      "closeTime": "09:00",
+      "isDayOff": false
+    },
+    {
+      "id": 6,
+      "day": "SAT",
+      "openTime": "08:00",
+      "closeTime": "09:00",
+      "isDayOff": false
+    },
+    {
+      "id": 7,
+      "day": "SUN",
+      "openTime": "08:00",
+      "closeTime": "09:00",
+      "isDayOff": false
+    }
+  ],
+  "wasteTypeIds": [1,2],
+  "ecopointTypeIds": [1,2,3],
+  "isConvenience": false
+}

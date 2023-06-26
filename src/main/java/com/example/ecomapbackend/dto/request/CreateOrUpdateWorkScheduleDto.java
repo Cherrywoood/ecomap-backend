@@ -16,11 +16,11 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreateOrUpdateOpeningHoursDto {
+public class CreateOrUpdateWorkScheduleDto {
 
     @Null(groups = OnCreate.class)
     @NotNull(groups = OnUpdate.class)
-    private Integer id;
+    private Long id;
 
     @NotNull
     private DayWeek day;

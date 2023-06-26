@@ -69,7 +69,7 @@ public class EcopointImageServiceImpl implements EcopointImageService {
     }
 
     @Override
-    public Resource findById(Integer id) {
+    public Resource findById(Long id) {
         var ecopointImage = ecopointImageRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(NOT_FOUND_ERROR.formatted(id)));
 
@@ -82,7 +82,7 @@ public class EcopointImageServiceImpl implements EcopointImageService {
         images.forEach(image -> fileRepository.delete(image.getImagePath()));
     }
 
-    public List<EcopointImage> findAllByEcopointId(Integer id) {
+    public List<EcopointImage> findAllByEcopointId(Long id) {
         return ecopointImageRepository.findAllByEcopointId(id);
     }
 
@@ -90,6 +90,4 @@ public class EcopointImageServiceImpl implements EcopointImageService {
         String fileExtension = StringUtils.getFilenameExtension(file.getOriginalFilename());
         return "%s.%s".formatted(UUID.randomUUID().toString(), fileExtension);
     }
-
-
 }

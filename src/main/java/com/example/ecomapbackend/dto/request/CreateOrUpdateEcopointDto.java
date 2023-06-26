@@ -20,7 +20,7 @@ public class CreateOrUpdateEcopointDto {
     private String address;
 
     @NotNull
-    private Point geometry;
+    private Point position;
 
     @NotBlank
     private String name;
@@ -41,8 +41,10 @@ public class CreateOrUpdateEcopointDto {
     private Boolean isConvenience = false;
 
     @Valid
-    private List<CreateOrUpdateOpeningHoursDto> openingHoursList;
+    private List<CreateOrUpdateWorkScheduleDto> workSchedules;
     private List<Short> wasteTypeIds;
+    private List<Short> shopTypeIds;
+    private List<Short> eventTypeIds;
 
     @NotNull
     @NotEmpty

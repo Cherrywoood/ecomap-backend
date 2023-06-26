@@ -13,25 +13,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class EcopointSuggestionDto {
-
     @NotBlank
     private String firstName;
-
     @Email
     @NotBlank
     private String email;
-
     @NotBlank
     private String ecopointName;
-
     @NotBlank
     private String address;
-
     @NotBlank
     private String description;
-
     private String site;
-
     @NotNull
     private Boolean isOrganization;
 }

@@ -10,6 +10,7 @@ import org.apache.tomcat.util.http.fileupload.impl.FileSizeLimitExceededExceptio
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.HttpMediaTypeException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -152,6 +153,16 @@ public class ResponseExceptionHandler {
                 BAD_REQUEST_MES,
                 request.getDescription(false),
                 fieldErrors
+        );
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorResponse handleBadCredentialsException(BadCredentialsException ex, WebRequest request) {
+        return new ErrorResponse(
+                HttpStatus.UNAUTHORIZED,
+                "Неверные учетные данные",
+                request.getDescription(false)
         );
     }
 

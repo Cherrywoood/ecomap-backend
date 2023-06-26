@@ -15,12 +15,12 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "opening_hours")
-public class OpeningHours {
+@Table(name = "work_schedule")
+public class WorkSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
@@ -45,8 +45,8 @@ public class OpeningHours {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof OpeningHours)) return false;
-        return id != null && id.equals(((OpeningHours) o).getId());
+        if (!(o instanceof WorkSchedule)) return false;
+        return id != null && id.equals(((WorkSchedule) o).getId());
     }
 
     @Override
